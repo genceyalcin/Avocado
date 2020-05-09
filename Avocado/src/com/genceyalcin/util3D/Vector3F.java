@@ -1,5 +1,8 @@
 package com.genceyalcin.util3D;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * An implementation of a 3 dimensional float based vector
  * 
@@ -7,22 +10,44 @@ package com.genceyalcin.util3D;
  * @version 5.9.2020
  */
 public class Vector3F implements Vector {
-    
-    // Instance variables
+
+    // Instance variables ///////////////////////////////////////
     private float[] vector;
-    
-    // Constructors
+
+    // Constructors /////////////////////////////////////////////
+
+    /**
+     * Constructs a Vector3F object out of x y and z entries.
+     * 
+     * @param x
+     *            The x entry
+     * @param y
+     *            The y entry
+     * @param z
+     *            The z entry
+     */
     public Vector3F(float x, float y, float z) {
         vector = new float[3];
+        vector[0] = x;
+        vector[1] = y;
+        vector[2] = z;
     }
-    
-    
-    // Methods
-    
-    
+
+    /**
+     * Constructs a Vector3F object from a float array
+     * 
+     * @param vector
+     *            The float array
+     */
+    public Vector3F(float[] vector) {
+        this.vector = vector;
+    }
+
+    // Methods //////////////////////////////////////////////////
+
     @Override
     public Number getN() {
-        
+
         return null;
     }
 
