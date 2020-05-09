@@ -46,22 +46,23 @@ public class Vector3F implements Vector {
     // Methods //////////////////////////////////////////////////
 
     @Override
-    public Number getN() {
-
+    public Number getN(int index) {
+        // TODO Auto-generated method stub
         return null;
     }
 
+    @Override
+    public void setN(Number entry, int index) {
+        // TODO Auto-generated method stub
+        
+    }
+    
     @Override
     public Number getLength() {
         // TODO Auto-generated method stub
         return null;
     }
 
-    @Override
-    public void setN(Number entry) {
-        // TODO Auto-generated method stub
-
-    }
 
     @Override
     public void scaleVector(Number scalar) {
