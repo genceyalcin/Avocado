@@ -26,14 +26,14 @@ public class VectorUtils {
         Vector plane2;
         try {
             plane1 = new Vector3F(
-                    v1.getN(0).floatValue() - v2.getN(0).floatValue(),
-                    v1.getN(1).floatValue() - v2.getN(1).floatValue(),
-                    v1.getN(2).floatValue() - v2.getN(2).floatValue());
+                    v2.getN(0).floatValue() - v1.getN(0).floatValue(),
+                    v2.getN(1).floatValue() - v1.getN(1).floatValue(),
+                    v2.getN(2).floatValue() - v1.getN(2).floatValue());
 
             plane2 = new Vector3F(
-                    v1.getN(0).floatValue() - v3.getN(0).floatValue(),
-                    v1.getN(1).floatValue() - v3.getN(1).floatValue(),
-                    v1.getN(2).floatValue() - v3.getN(2).floatValue());
+                    v3.getN(0).floatValue() - v1.getN(0).floatValue(),
+                    v3.getN(1).floatValue() - v1.getN(1).floatValue(),
+                    v3.getN(2).floatValue() - v1.getN(2).floatValue());
 
             plane1.cross(plane1, plane2);
 
