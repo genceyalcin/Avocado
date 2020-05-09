@@ -13,7 +13,7 @@ public class Vector3F implements Vector {
     
     // Constructors
     public Vector3F(float x, float y, float z) {
-        
+        vector = new float[3];
     }
     
     
