@@ -43,14 +43,14 @@ public class Vector3F implements Vector {
      *            The index to get from
      * @return The Nth index of this vector
      */
-	@Override
+    @Override
 	public Number getN(int index) throws InvalidVectorIndexException {
 		
 		if (index > 2 || index < 0) {
 			throw new InvalidVectorIndexException("Index must be less than 3. Your input: " + index);
 		}
 		
-		return new Float(this.vector[index]);
+		return this.vector[index];
 		
 	}
 
@@ -66,7 +66,7 @@ public class Vector3F implements Vector {
     		squaredSum += vector[i]*vector[i];
     	}
     	
-    	return new Float(Math.sqrt(squaredSum));
+    	return Math.sqrt(squaredSum);
     }
 
     /**
@@ -139,7 +139,7 @@ public class Vector3F implements Vector {
     		dotProduct += inputVector.vector[i]*vector[i];
     	}
     	
-    	return new Float(dotProduct);
+    	return dotProduct;
     }
 
     /**
@@ -200,7 +200,7 @@ public class Vector3F implements Vector {
     	float angle = (float)Math.acos(dotProduct/magProduct);
     	
     	
-    	return new Float(angle);
+    	return angle;
     }
 
 }
