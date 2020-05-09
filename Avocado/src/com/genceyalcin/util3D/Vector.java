@@ -9,9 +9,11 @@ package com.genceyalcin.util3D;
 public interface Vector {
 
     /**
+     * @param index
+     *            The index to get from
      * @return The Nth index of this vector
      */
-    public Number getN();
+    public Number getN(int index);
 
     /**
      * @return The magnitude or length of this vector
@@ -23,8 +25,10 @@ public interface Vector {
      * 
      * @param entry
      *            The number to insert into the vector
+     * @param index
+     *            The index to set
      */
-    public void setN(Number entry);
+    public void setN(Number entry, int index);
 
     /**
      * Scales the vector by a scalar factor
