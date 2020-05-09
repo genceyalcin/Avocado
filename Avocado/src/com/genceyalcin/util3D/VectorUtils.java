@@ -11,6 +11,7 @@ public class VectorUtils {
     /**
      * Finds the normal to a plane defined by 3 vectors
      * 
+     * 
      * @param v1
      *            The first plane vector
      * @param v2
