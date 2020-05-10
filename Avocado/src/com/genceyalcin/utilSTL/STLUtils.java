@@ -30,12 +30,13 @@ public class STLUtils {
      * @param object
      *            The mesh to be turned into STL format
      * @throws IOException
-     * @throws InvalidVectorIndexException 
+     * @throws InvalidVectorIndexException
      */
     public static void createBinarySTLFile(String fileName, Mesh object)
             throws IOException, InvalidVectorIndexException {
 
         RandomAccessFile stlFile = new RandomAccessFile(fileName, "rw");
+        stlFile.setLength(0);
 
         ByteArrayOutputStream outputBuffer = new ByteArrayOutputStream();
         DataOutputStream dos = new DataOutputStream(outputBuffer);
@@ -52,11 +53,14 @@ public class STLUtils {
             }
         }
 
-        dos.writeInt(tris.size());
+        System.out.println(tris.size());
+        
+        dos.write(intToLittleEndianByteArray(tris.size()));
         dos.flush();
-
+        
         stlFile.write(outputBuffer.toByteArray());
-
+        outputBuffer.reset();
+        
         int counter = 0;
         for (Triangle t : tris) {
 
@@ -64,6 +68,7 @@ public class STLUtils {
             if (counter == 180) {
                 dos.flush();
                 stlFile.write(outputBuffer.toByteArray());
+                outputBuffer.reset();
             }
 
             // Get the vertices for this triangle
@@ -72,38 +77,64 @@ public class STLUtils {
             // Calculate the normal vector
             Vector normal = VectorUtils.findNormalToPlane(vertices.get(0),
                     vertices.get(1), vertices.get(2));
-            
+
             // Write normal
-            dos.writeFloat(normal.getN(0).floatValue());
-            dos.writeFloat(normal.getN(1).floatValue());
-            dos.writeFloat(normal.getN(2).floatValue());
-            
+            dos.write(
+                    floatToLittleEndianByteArray(normal.getN(0).floatValue()));
+            dos.write(
+                    floatToLittleEndianByteArray(normal.getN(1).floatValue()));
+            dos.write(
+                    floatToLittleEndianByteArray(normal.getN(2).floatValue()));
+
             // Write vertex 1
             Vector v1 = vertices.get(0);
-            dos.writeFloat(v1.getN(0).floatValue());
-            dos.writeFloat(v1.getN(1).floatValue());
-            dos.writeFloat(v1.getN(2).floatValue());
+            dos.write(floatToLittleEndianByteArray(v1.getN(0).floatValue()));
+            dos.write(floatToLittleEndianByteArray(v1.getN(1).floatValue()));
+            dos.write(floatToLittleEndianByteArray(v1.getN(2).floatValue()));
             
+            
+
             // Write vertex 2
             Vector v2 = vertices.get(1);
-            dos.writeFloat(v2.getN(0).floatValue());
-            dos.writeFloat(v2.getN(1).floatValue());
-            dos.writeFloat(v2.getN(2).floatValue());
-            
+            dos.write(floatToLittleEndianByteArray(v2.getN(0).floatValue()));
+            dos.write(floatToLittleEndianByteArray(v2.getN(1).floatValue()));
+            dos.write(floatToLittleEndianByteArray(v2.getN(2).floatValue()));
+
             // Write vertex 3
             Vector v3 = vertices.get(2);
-            dos.writeFloat(v3.getN(0).floatValue());
-            dos.writeFloat(v3.getN(1).floatValue());
-            dos.writeFloat(v3.getN(2).floatValue());
-            
+            dos.write(floatToLittleEndianByteArray(v3.getN(0).floatValue()));
+            dos.write(floatToLittleEndianByteArray(v3.getN(1).floatValue()));
+            dos.write(floatToLittleEndianByteArray(v3.getN(2).floatValue()));
+
             // Attribute byte count
-            dos.writeShort(0);
-            
+            dos.write(shortToLittleEndianByteArray((short) 0));
+
             counter++;
 
         }
 
+        if (counter != 0) {
+            dos.flush();
+            stlFile.write(outputBuffer.toByteArray());
+        }
+
         stlFile.close();
+        outputBuffer.close();
+    }
+
+    private static byte[] shortToLittleEndianByteArray(short value) {
+        return new byte[] { (byte) (value), (byte) (value >> 8) };
+    }
+
+    private static byte[] intToLittleEndianByteArray(int value) {
+        return new byte[] { (byte) (value), (byte) (value >> 8),
+                (byte) (value >> 16), (byte) (value >> 24) };
+    }
+
+    private static byte[] floatToLittleEndianByteArray(float value) {
+        int intBits = Float.floatToIntBits(value);
+        return new byte[] { (byte) (intBits), (byte) (intBits >> 8),
+                (byte) (intBits >> 16), (byte) (intBits >> 24) };
     }
 
 }

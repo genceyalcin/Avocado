@@ -36,7 +36,7 @@ public class VectorUtils {
                     v3.getN(2).floatValue() - v1.getN(2).floatValue());
 
             plane1.cross(plane1, plane2);
-
+            
             return plane1;
 
         } catch (InvalidVectorIndexException
