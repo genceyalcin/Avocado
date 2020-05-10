@@ -54,13 +54,13 @@ public class STLUtils {
         }
 
         System.out.println(tris.size());
-        
+
         dos.write(intToLittleEndianByteArray(tris.size()));
         dos.flush();
-        
+
         stlFile.write(outputBuffer.toByteArray());
         outputBuffer.reset();
-        
+
         int counter = 0;
         for (Triangle t : tris) {
 
@@ -91,8 +91,6 @@ public class STLUtils {
             dos.write(floatToLittleEndianByteArray(v1.getN(0).floatValue()));
             dos.write(floatToLittleEndianByteArray(v1.getN(1).floatValue()));
             dos.write(floatToLittleEndianByteArray(v1.getN(2).floatValue()));
-            
-            
 
             // Write vertex 2
             Vector v2 = vertices.get(1);
@@ -122,15 +120,36 @@ public class STLUtils {
         outputBuffer.close();
     }
 
+    /**
+     * Converts a short to a little-endian byte array
+     * 
+     * @param value
+     *            The short to be converted
+     * @return A byte array representing the short in little-endian
+     */
     private static byte[] shortToLittleEndianByteArray(short value) {
         return new byte[] { (byte) (value), (byte) (value >> 8) };
     }
 
+    /**
+     * Converts an integer to a little-endian byte array
+     * 
+     * @param value
+     *            The integer to be converted
+     * @return A byte array representing the integer in little-endian
+     */
     private static byte[] intToLittleEndianByteArray(int value) {
         return new byte[] { (byte) (value), (byte) (value >> 8),
                 (byte) (value >> 16), (byte) (value >> 24) };
     }
 
+    /**
+     * Converts a float to a little-endian byte array
+     * 
+     * @param value
+     *            The float to be converted
+     * @return A byte array representing the float in little-endian
+     */
     private static byte[] floatToLittleEndianByteArray(float value) {
         int intBits = Float.floatToIntBits(value);
         return new byte[] { (byte) (intBits), (byte) (intBits >> 8),
