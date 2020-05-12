@@ -21,6 +21,8 @@ import com.genceyalcin.util3D.VectorUtils;
  */
 public class STLUtils {
 
+    // Public Methods /////////////////////////////////////////////////////////
+    
     /**
      * Creates a binary STL file given a mesh
      * 
@@ -118,6 +120,8 @@ public class STLUtils {
         stlFile.close();
         outputBuffer.close();
     }
+    
+    // Private Methods ////////////////////////////////////////////////////////
 
     /**
      * Converts a short to a little-endian byte array

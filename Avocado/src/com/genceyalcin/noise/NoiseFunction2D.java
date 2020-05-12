@@ -11,7 +11,19 @@ import java.awt.image.BufferedImage;
 public interface NoiseFunction2D {
 
     /**
-     * @return Buffered Image of the 2D noise (grayscale)
+     * Creates noise. Run this if any changes are made to the properties of the
+     * noise function so that it can regenerate under the new parameters.
+     */
+    public void generateNoise();
+
+    /**
+     * Default seed generation function. Generates random seed for the function,
+     * and sets the seed to the randomly generated one.
+     */
+    public void generateRandomSeed();
+
+    /**
+     * @return Buffered Image of the 2D noise (gray-scale)
      */
     public BufferedImage getBufferedImage();
 
