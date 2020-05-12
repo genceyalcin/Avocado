@@ -44,10 +44,10 @@ public class Vector3F implements Vector {
      * @return The Nth index of this vector
      */
     @Override
-	public Number getN(int index) throws InvalidVectorIndexException {
+	public Number getN(int index) throws IndexOutOfBoundsException {
 		
 		if (index > 2 || index < 0) {
-			throw new InvalidVectorIndexException("Index must be less than 3. Your input: " + index);
+			throw new IndexOutOfBoundsException("Index must be less than 3. Your input: " + index);
 		}
 		
 		return this.vector[index];
@@ -78,10 +78,10 @@ public class Vector3F implements Vector {
      *            The index to set
      */
     @Override
-    public void setN(Number entry, int index) throws InvalidVectorIndexException{
+    public void setN(Number entry, int index) throws IndexOutOfBoundsException{
     	
     	if (index > 2 || index < 0) {
-			throw new InvalidVectorIndexException("Index must be less than 3. Your input: " + index);
+			throw new IndexOutOfBoundsException("Index must be less than 3. Your input: " + index);
 		}
     	
     	vector[index] = entry.floatValue();

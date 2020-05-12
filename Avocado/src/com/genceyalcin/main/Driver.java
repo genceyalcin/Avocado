@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.genceyalcin.util3D.InvalidVectorIndexException;
 import com.genceyalcin.util3D.Mesh;
 import com.genceyalcin.util3D.Polygon;
 import com.genceyalcin.util3D.Triangle;
@@ -26,18 +25,16 @@ public class Driver {
      * @throws InvalidVectorIndexException
      * @throws IOException
      */
-    public static void main(String args[])
-            throws IOException, InvalidVectorIndexException {
+    public static void main(String args[]) throws IOException {
 
         // Make meshes
         List<Polygon> myList = new ArrayList<Polygon>();
-       
+
         // Front face
         myList.add(new Triangle(new Vector3F(0, 0, 0), new Vector3F(1, 0, 0),
                 new Vector3F(0, 1, 0)));
         myList.add(new Triangle(new Vector3F(1, 1, 0), new Vector3F(0, 1, 0),
                 new Vector3F(1, 0, 0)));
-   
 
         Mesh cubeMesh = new Mesh(myList);
 

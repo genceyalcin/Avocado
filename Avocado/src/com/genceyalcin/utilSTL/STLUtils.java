@@ -7,7 +7,6 @@ import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.genceyalcin.util3D.InvalidVectorIndexException;
 import com.genceyalcin.util3D.Mesh;
 import com.genceyalcin.util3D.Polygon;
 import com.genceyalcin.util3D.Triangle;
@@ -33,7 +32,7 @@ public class STLUtils {
      * @throws InvalidVectorIndexException
      */
     public static void createBinarySTLFile(String fileName, Mesh object)
-            throws IOException, InvalidVectorIndexException {
+            throws IOException {
 
         RandomAccessFile stlFile = new RandomAccessFile(fileName, "rw");
         stlFile.setLength(0);

@@ -13,7 +13,7 @@ public interface Vector {
      *            The index to get from
      * @return The Nth index of this vector
      */
-    public Number getN(int index) throws InvalidVectorIndexException;
+    public Number getN(int index) throws IndexOutOfBoundsException;
 
     /**
      * @return The magnitude or length of this vector
@@ -28,7 +28,7 @@ public interface Vector {
      * @param index
      *            The index to set
      */
-    public void setN(Number entry, int index) throws InvalidVectorIndexException;
+    public void setN(Number entry, int index) throws IndexOutOfBoundsException;
 
     /**
      * Scales the vector by a scalar factor

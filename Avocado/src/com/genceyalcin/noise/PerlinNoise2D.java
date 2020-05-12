@@ -1,5 +1,5 @@
 package com.genceyalcin.noise;
 
-public class PerlinNoise {
+public class PerlinNoise2D {
 
 }

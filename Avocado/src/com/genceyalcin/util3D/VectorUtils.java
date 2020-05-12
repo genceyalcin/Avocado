@@ -39,8 +39,7 @@ public class VectorUtils {
             
             return plane1;
 
-        } catch (InvalidVectorIndexException
-                | InvalidVectorDimensionsException e) {
+        } catch (InvalidVectorDimensionsException e) {
             e.printStackTrace();
         }
 
